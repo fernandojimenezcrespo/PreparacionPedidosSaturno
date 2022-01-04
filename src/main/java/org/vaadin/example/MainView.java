@@ -5,13 +5,19 @@ import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.button.ButtonVariant;
 import com.vaadin.flow.component.combobox.ComboBox;
 import com.vaadin.flow.component.dependency.CssImport;
+import com.vaadin.flow.component.grid.Grid;
 import com.vaadin.flow.component.notification.Notification;
 import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.component.textfield.TextField;
 import com.vaadin.flow.router.Route;
 import com.vaadin.flow.server.PWA;
+import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.vaadin.beans.Articulos;
 
 @Route
 @PWA(name = "Vaadin Application",
@@ -37,6 +43,13 @@ public class MainView extends HorizontalLayout {
         cmbServicioSeccion.setId("idServicioSeccion");
         cmbServicioSeccion.setLabel("Servicio/Seccion");
         cmbServicioSeccion.setItems("Lab./Hema","Lab./Urg.","Lab./Micro");
+        Articulos articulo=new Articulos();
+        List<Articulos> articulosList = new ArrayList<Articulos>();
+        articulosList=cargaArticulos(articulo, articulosList);
+        Grid<Articulos> grid = new Grid<>(Articulos.class);
+        grid.setItems(articulosList);
+        
+         
         
         textCampoNombre.setId("idCampoNombre");
 
@@ -55,8 +68,19 @@ public class MainView extends HorizontalLayout {
         // Use custom CSS classes to apply styling. This is defined in shared-styles.css.
         addClassName("centered-content");
         vertical_izq.add(textCampoNombre, button);
-        vertical_dcha.add(cmbTipoPedido,cmbServicioSeccion);
+        vertical_dcha.add(cmbTipoPedido,cmbServicioSeccion,grid);
         add(vertical_izq, vertical_dcha);
     }
 
+    private List<Articulos> cargaArticulos(Articulos articulo,List<Articulos> articulosList){
+        //Articulos articulo=new Articulos();
+        
+        articulo.setCodigoSaturno("000001");
+        articulo.setDescripcion("Articulo000001");
+        articulo.setStockMinimo(10);
+        articulo.setCantidadPedir(0);
+        articulosList.add(articulo);
+        return articulosList;
+        
+    }
 }
