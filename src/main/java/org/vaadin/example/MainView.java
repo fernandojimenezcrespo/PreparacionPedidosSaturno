@@ -18,6 +18,7 @@ import java.util.Arrays;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.vaadin.beans.Articulos;
+import org.vaadin.utils.LeerFicherosXML;
 
 @Route
 @PWA(name = "Vaadin Application",
@@ -39,18 +40,16 @@ public class MainView extends HorizontalLayout {
         textCampoNombre.addThemeName("bordered");
         cmbTipoPedido.setId("idTipoPedido");
         cmbTipoPedido.setLabel("Tipo de Pedido");
-        cmbTipoPedido.setItems("Almacen","Compra Directa");
+        cmbTipoPedido.setItems("Almacen", "Compra Directa");
         cmbServicioSeccion.setId("idServicioSeccion");
         cmbServicioSeccion.setLabel("Servicio/Seccion");
-        cmbServicioSeccion.setItems("Lab./Hema","Lab./Urg.","Lab./Micro");
-        Articulos articulo=new Articulos();
+        cmbServicioSeccion.setItems("Lab./Hema", "Lab./Urg.", "Lab./Micro");
+        Articulos articulo = new Articulos();
         List<Articulos> articulosList = new ArrayList<Articulos>();
-        articulosList=cargaArticulos(articulo, articulosList);
+        articulosList = cargaArticulos(articulo, articulosList);
         Grid<Articulos> grid = new Grid<>(Articulos.class);
         grid.setItems(articulosList);
-        
-         
-        
+
         textCampoNombre.setId("idCampoNombre");
 
         // Button click listeners can be defined as lambda expressions
@@ -68,19 +67,24 @@ public class MainView extends HorizontalLayout {
         // Use custom CSS classes to apply styling. This is defined in shared-styles.css.
         addClassName("centered-content");
         vertical_izq.add(textCampoNombre, button);
-        vertical_dcha.add(cmbTipoPedido,cmbServicioSeccion,grid);
+        vertical_dcha.add(cmbTipoPedido, cmbServicioSeccion, grid);
         add(vertical_izq, vertical_dcha);
     }
 
-    private List<Articulos> cargaArticulos(Articulos articulo,List<Articulos> articulosList){
+    private List<Articulos> cargaArticulos(Articulos articulo, List<Articulos> articulosList) {
         //Articulos articulo=new Articulos();
-        
-        articulo.setCodigoSaturno("000001");
-        articulo.setDescripcion("Articulo000001");
-        articulo.setStockMinimo(10);
-        articulo.setCantidadPedir(0);
-        articulosList.add(articulo);
-        return articulosList;
-        
+        try {
+            LeerFicherosXML leerFicherosXML = new LeerFicherosXML();
+            articulosList = leerFicherosXML.LeerXML("C:\\Users\\ferna\\Documents\\Programacion\\Vaadin\\PreparacionPedidosSaturno\\src\\main\\java\\org\\vaadin\\ficherosXML\\LAB_RUTINA.xml");
+            articulo.setCodigoSaturno("000001");
+            articulo.setDescripcion("Articulo000001");
+            articulo.setStockMinimo(10);
+            articulo.setCantidadPedir(1);
+            articulosList.add(articulo);
+            return articulosList;
+        } catch (Exception e) {
+        }
+        return null;
+
     }
 }
