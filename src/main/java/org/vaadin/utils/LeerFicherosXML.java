@@ -23,39 +23,46 @@ import org.w3c.dom.NodeList;
  */
 public class LeerFicherosXML {
 
-     
-    final String DIRECTORIOXML="C:\\Users\\ferna\\Documents\\Programacion\\Vaadin\\PreparacionPedidosSaturno\\src\\main\\java\\org\\vaadin\\ficherosXML\\";
-     
+    final String DIRECTORIOXML = "C:\\Users\\ferna\\Documents\\Programacion\\Vaadin\\PreparacionPedidosSaturno\\src\\main\\java\\org\\vaadin\\ficherosXML\\";
 
     public List<Articulos> LeerXML(String ficheroXML) throws IOException {
         try {
-            Articulos articulo = new Articulos();
+            
             List<Articulos> articulosList = new ArrayList<Articulos>();
-            ficheroXML=DIRECTORIOXML.trim()+ficheroXML.trim();
+            ficheroXML = DIRECTORIOXML.trim() + ficheroXML.trim();
             File fileXML = new File(ficheroXML);
             DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
             DocumentBuilder db = dbf.newDocumentBuilder();
             Document document = db.parse(fileXML);
             document.getDocumentElement().normalize();
             NodeList nList = document.getElementsByTagName("articulo");
-            
-             for (int temp = 0; temp < nList.getLength(); temp++) {
+            String codigo = null;
+            String descripcion = null;
+            String stock_minimo = null;
+            int minimo = 0;
+            for (int temp = 0; temp < nList.getLength(); temp++) {
                 Node nNode = nList.item(temp);
                 if (nNode.getNodeType() == Node.ELEMENT_NODE) {
+                    Articulos articulo = new Articulos();
                     Element eElement = (Element) nNode;
-                    String codigo=eElement.getElementsByTagName("codigo").item(0).getTextContent();
-                    String descripcion=eElement.getElementsByTagName("descripcion").item(0).getTextContent();
-                    String stock_minimo=eElement.getElementsByTagName("stock_minimo").item(0).getTextContent();
-                    int minimo= Integer.parseInt(stock_minimo);
+                    codigo="";descripcion="";stock_minimo="";minimo=0;
+                    codigo = eElement.getElementsByTagName("codigo").item(0).getTextContent();
+                    descripcion = eElement.getElementsByTagName("descripcion").item(0).getTextContent();
+                    stock_minimo = eElement.getElementsByTagName("stock_minimo").item(0).getTextContent();
+                    minimo = Integer.parseInt(stock_minimo);
                     articulo.setCodigoSaturno(codigo);
                     articulo.setDescripcion(descripcion);
                     articulo.setStockMinimo(minimo);
                     articulo.setCantidadPedir(1);
-                    articulosList.add(articulo);
+                    articulosList.add(temp,articulo);
+                    // Recuerda que si  no creas el objeto  articulo cada iteración siempre te graba lo mismo.
+                     
+                     
+                    System.out.println("Codigo:" + codigo + "\n");
                     System.out.println("Descrip " + eElement.getElementsByTagName("descripcion").item(0).getTextContent());
-                 }
+                }
             }
-            
+
             return articulosList;
         } catch (Exception e) {
         }

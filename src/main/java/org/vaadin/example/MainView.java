@@ -6,6 +6,7 @@ import com.vaadin.flow.component.button.ButtonVariant;
 import com.vaadin.flow.component.combobox.ComboBox;
 import com.vaadin.flow.component.dependency.CssImport;
 import com.vaadin.flow.component.grid.Grid;
+import com.vaadin.flow.component.grid.GridVariant;
 import com.vaadin.flow.component.notification.Notification;
 import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
@@ -22,18 +23,19 @@ import org.vaadin.utils.LeerFicherosXML;
 
 @Route
 @PWA(name = "Vaadin Application",
-        shortName = "Vaadin App",
-        description = "This is an example Vaadin application.",
+        shortName = "PedidosSaturno",
+        description = "This is my first example fernando's  Vaadin application.",
         enableInstallPrompt = false)
-@CssImport("./styles/shared-styles.css")
-@CssImport(value = "./styles/vaadin-text-field-styles.css", themeFor = "vaadin-text-field")
-public class MainView extends HorizontalLayout {
+//@CssImport("./styles/shared-styles.css")
+//@CssImport(value = "./styles/vaadin-text-field-styles.css", themeFor = "vaadin-text-field")
+public class MainView extends VerticalLayout {
 
     public MainView(@Autowired GreetService service) {
 
         // Use TextField for standard text input
         VerticalLayout vertical_izq = new VerticalLayout();
         VerticalLayout vertical_dcha = new VerticalLayout();
+        vertical_dcha.setWidthFull();
         TextField textCampoNombre = new TextField("Your name");
         ComboBox<String> cmbTipoPedido = new ComboBox();
         ComboBox<String> cmbServicioSeccion = new ComboBox();
@@ -48,7 +50,13 @@ public class MainView extends HorizontalLayout {
         List<Articulos> articulosList = new ArrayList<Articulos>();
         articulosList = cargaArticulos(articulo, articulosList);
         Grid<Articulos> grid = new Grid<>(Articulos.class);
-        grid.setItems(articulosList);
+         
+        grid.setAllRowsVisible(false);
+        //grid.setWidthFull();
+        
+        //grid.setSizeFull();
+        grid.addThemeVariants(GridVariant.LUMO_NO_BORDER);//No pone bordes verticales.
+         grid.setItems(articulosList);
 
         textCampoNombre.setId("idCampoNombre");
 
@@ -67,8 +75,8 @@ public class MainView extends HorizontalLayout {
         // Use custom CSS classes to apply styling. This is defined in shared-styles.css.
         addClassName("centered-content");
         vertical_izq.add(textCampoNombre, button);
-        vertical_dcha.add(cmbTipoPedido, cmbServicioSeccion, grid);
-        add(vertical_izq, vertical_dcha);
+        vertical_dcha.add(grid,cmbTipoPedido, cmbServicioSeccion);
+        add( vertical_dcha);
     }
 
     private List<Articulos> cargaArticulos(Articulos articulo, List<Articulos> articulosList) {
