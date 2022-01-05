@@ -75,12 +75,12 @@ public class MainView extends HorizontalLayout {
         //Articulos articulo=new Articulos();
         try {
             LeerFicherosXML leerFicherosXML = new LeerFicherosXML();
-            articulosList = leerFicherosXML.LeerXML("C:\\Users\\ferna\\Documents\\Programacion\\Vaadin\\PreparacionPedidosSaturno\\src\\main\\java\\org\\vaadin\\ficherosXML\\LAB_RUTINA.xml");
-            articulo.setCodigoSaturno("000001");
+            articulosList = leerFicherosXML.LeerXML("LAB_RUTINA.xml");
+            /*articulo.setCodigoSaturno("000001");
             articulo.setDescripcion("Articulo000001");
             articulo.setStockMinimo(10);
             articulo.setCantidadPedir(1);
-            articulosList.add(articulo);
+            articulosList.add(articulo);*/
             return articulosList;
         } catch (Exception e) {
         }
