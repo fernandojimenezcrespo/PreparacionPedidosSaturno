@@ -15,13 +15,18 @@ import com.vaadin.flow.component.textfield.TextField;
 import com.vaadin.flow.router.Route;
 import com.vaadin.flow.server.PWA;
 import com.vaadin.flow.shared.Registration;
+import java.io.IOException;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.vaadin.beans.Articulos;
+import org.vaadin.beans.Ficheros;
 import org.vaadin.utils.LeerFicherosXML;
+import org.vaadin.utils.LeerServiciosSeccionesXML;
 
 @Route
 @PWA(name = "Vaadin Application",
@@ -36,9 +41,18 @@ public class MainView extends HorizontalLayout {
     boolean hayServicio = false;
     Articulos articulo = new Articulos();
     List<Articulos> articulosList = new ArrayList<Articulos>();
+    Ficheros ficheros = new Ficheros();
+    List<Ficheros> ficherosList= new ArrayList<Ficheros>();
+    LeerServiciosSeccionesXML leerServiciosSeccionesXML= new LeerServiciosSeccionesXML();
     Grid<Articulos> gridArticulos = new Grid<>(Articulos.class);
+    
 
     public MainView(@Autowired GreetService service) {
+        try {
+            ficherosList=leerServiciosSeccionesXML.LeerXML();
+        } catch (IOException ex) {
+            Logger.getLogger(MainView.class.getName()).log(Level.SEVERE, null, ex);
+        }
         VerticalLayout vertical_izq = new VerticalLayout();
         VerticalLayout vertical_dcha = new VerticalLayout();
         vertical_dcha.setWidth("80%");

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- fichero con los servicios-servicioes y ficheros -->
+<serviciosSaturno>
+    <fichero>
+        <servicio>ACLA</servicio>
+        <seccion>RUTINA</seccion>
+        <descripcion>ACLA/rutina</descripcion>
+        <nombre_fichero>LAB_RUTINA.xml</nombre_fichero>
+    </fichero>
+    <fichero>
+        <servicio>ACLA</servicio>
+        <seccion>URG</seccion>
+        <descripcion>ACLA/urg</descripcion>
+        <nombre_fichero>LAB_RUTINA.xml</nombre_fichero>
+    </fichero>
+    <fichero>
+        <servicio>ACLA</servicio>
+        <seccion>MICRO</seccion>
+        <descripcion>ACLA/micro</descripcion>
+        <nombre_fichero>LAB_RUTINA.xml</nombre_fichero>
+    </fichero>
+    
+</serviciosSaturno>
+ 
