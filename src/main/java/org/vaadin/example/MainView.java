@@ -39,6 +39,7 @@ public class MainView extends HorizontalLayout {
 
     boolean hayTipo = false;
     boolean hayServicio = false;
+    String ficheroSeleccionado="";
     Articulos articulo = new Articulos();
     List<Articulos> articulosList = new ArrayList<Articulos>();
     Ficheros ficheros = new Ficheros();
@@ -49,6 +50,7 @@ public class MainView extends HorizontalLayout {
 
     public MainView(@Autowired GreetService service) {
         try {
+            ficheroSeleccionado="";
             ficherosList=leerServiciosSeccionesXML.LeerXML();
         } catch (IOException ex) {
             Logger.getLogger(MainView.class.getName()).log(Level.SEVERE, null, ex);
@@ -59,15 +61,13 @@ public class MainView extends HorizontalLayout {
         vertical_izq.setWidth("20%");
         TextField textCampoNombre = new TextField("Your name");
         ComboBox<String> cmbTipoPedido = new ComboBox();
-        ComboBox<String> cmbServicioSeccion = new ComboBox();
+         ComboBox<Ficheros> cmbServicioSeccion = new ComboBox<>("Servicio/Seccion");
+        cmbServicioSeccion.setItemLabelGenerator(Ficheros::getDescripcion);
+        cmbServicioSeccion.setItems(ficherosList);
         textCampoNombre.addThemeName("bordered");
         cmbTipoPedido.setId("idTipoPedido");
         cmbTipoPedido.setLabel("Tipo de Pedido");
         cmbTipoPedido.setItems("Almacen", "Compra Directa");
-        cmbServicioSeccion.setId("idServicioSeccion");
-        cmbServicioSeccion.setLabel("Servicio/Seccion");
-        cmbServicioSeccion.setItems("Lab./Hema", "Lab./Urg.", "Lab./Micro");
-
         Span spanAclaracionTipo = new Span("-");
         Span spanAclaracionServicioSeccion = new Span("-");
         /*cmbTipoPedido.addValueChangeListener(event
@@ -81,7 +81,7 @@ public class MainView extends HorizontalLayout {
             hayTipo = actulizaTipoPedido(event.getValue());
             if (hayTipo && hayServicio) {
                 gridArticulos.setVisible(true);
-                articulosList = cargaArticulos(articulo, articulosList);
+                articulosList = cargaArticulos(articulo, articulosList,ficheroSeleccionado);
                 gridArticulos.setItems(articulosList);
             }
 
@@ -89,17 +89,18 @@ public class MainView extends HorizontalLayout {
         );
         cmbServicioSeccion.addValueChangeListener(event
                 -> {
-            spanAclaracionServicioSeccion.setText("El tipo es: " + event.getValue());
-            hayServicio = actulizaServicioSeccion(event.getValue());
+            spanAclaracionServicioSeccion.setText("El fichero es: " + event.getValue().getFichero());
+            hayServicio = actulizaServicioSeccion(event.getValue().getDescripcion());
+            ficheroSeleccionado=event.getValue().getFichero();
             if (hayTipo && hayServicio) {
                 gridArticulos.setVisible(true);
-                articulosList = cargaArticulos(articulo, articulosList);
+                articulosList = cargaArticulos(articulo, articulosList,ficheroSeleccionado);
                 gridArticulos.setItems(articulosList);
             }
         }
         );
         if (hayTipo && hayServicio) {
-            articulosList = cargaArticulos(articulo, articulosList);
+            articulosList = cargaArticulos(articulo, articulosList,ficheroSeleccionado);
         }
 
         gridArticulos.setVisible(false);
@@ -130,11 +131,11 @@ public class MainView extends HorizontalLayout {
         add(vertical_izq, vertical_dcha);
     }
 
-    private List<Articulos> cargaArticulos(Articulos articulo, List<Articulos> articulosList) {
+    private List<Articulos> cargaArticulos(Articulos articulo, List<Articulos> articulosList, String ficheroSelecionado) {
         //Articulos articulo=new Articulos();
         try {
             LeerFicherosXML leerFicherosXML = new LeerFicherosXML();
-            articulosList = leerFicherosXML.LeerXML("LAB_RUTINA.xml");
+            articulosList = leerFicherosXML.LeerXML(ficheroSelecionado);
             /*articulo.setCodigoSaturno("000001");
             articulo.setDescripcion("Articulo000001");
             articulo.setStockMinimo(10);

@@ -11,13 +11,13 @@
         <servicio>ACLA</servicio>
         <seccion>URG</seccion>
         <descripcion>ACLA/urg</descripcion>
-        <nombre_fichero>LAB_RUTINA.xml</nombre_fichero>
+        <nombre_fichero>LAB_URG.xml</nombre_fichero>
     </fichero>
     <fichero>
         <servicio>ACLA</servicio>
         <seccion>MICRO</seccion>
         <descripcion>ACLA/micro</descripcion>
-        <nombre_fichero>LAB_RUTINA.xml</nombre_fichero>
+        <nombre_fichero>LAB_MICRO.xml</nombre_fichero>
     </fichero>
     
 </serviciosSaturno>
