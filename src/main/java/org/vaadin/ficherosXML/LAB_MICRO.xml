@@ -1,0 +1,242 @@
+<pedidosSaturno>
+    <articulo>
+        <referencia_hnss></referencia_hnss>
+        <codigo>7P5820</codigo>
+        <descripcion>MICRO c Amylase Reactivo 2x250</descripcion>
+        <stock_minimo>4</stock_minimo>
+    </articulo>
+    <articulo>
+        <referencia_hnss></referencia_hnss>
+        <codigo>8P0220</codigo>
+        <descripcion>MICRO c Albumin BCG Reactivo 10x325</descripcion>
+        <stock_minimo>4</stock_minimo>
+    </articulo>
+    <articulo>
+        <referencia_hnss></referencia_hnss>
+        <codigo>7P7620</codigo>
+        <descripcion>MICRO c Cholesterol Reactivo 10x400</descripcion>
+        <stock_minimo>4</stock_minimo>
+    </articulo>
+    <articulo>
+        <referencia_hnss></referencia_hnss>
+        <codigo>8P2020</codigo>
+        <descripcion>MICRO c Alkaline Phosphatase Reactivo10x400</descripcion>
+        <stock_minimo>4</stock_minimo>
+    </articulo>
+    <articulo>
+        <referencia_hnss></referencia_hnss>
+        <codigo>4V5121</codigo>
+        <descripcion>MICRO c Total Bilirubin Reactivo 10x275</descripcion>
+        <stock_minimo>6</stock_minimo>
+    </articulo>
+    <articulo>
+        <referencia_hnss></referencia_hnss>
+        <codigo>7P5720</codigo>
+        <descripcion>MICRO c Calcio Reactivo 10x400</descripcion>
+        <stock_minimo>4</stock_minimo>
+    </articulo>
+    <articulo>
+        <referencia_hnss></referencia_hnss>
+        <codigo>9P5920</codigo>
+        <descripcion>MICRO c Haptoglobin Reactivo 2x90</descripcion>
+        <stock_minimo>1</stock_minimo>
+    </articulo>
+    <articulo>
+        <referencia_hnss></referencia_hnss>
+        <codigo>9P9320</codigo>
+        <descripcion>MICRO c Ceruloplasmin Reactivo 2x100</descripcion>
+        <stock_minimo>1</stock_minimo>
+    </articulo>
+    <articulo>
+        <referencia_hnss></referencia_hnss>
+        <codigo>1R0720</codigo>
+        <descripcion>MICRO c A1-Antitrypsin Reactivo 2x100</descripcion>
+        <stock_minimo>1</stock_minimo>
+    </articulo>
+    <articulo>
+        <referencia_hnss></referencia_hnss>
+        <codigo>9P5520</codigo>
+        <descripcion>MICRO c Cocaina en orina Reactivo 2x250</descripcion>
+        <stock_minimo>2</stock_minimo>
+    </articulo>
+    <articulo>
+        <referencia_hnss></referencia_hnss>
+        <codigo>9P6520</codigo>
+        <descripcion>MICRO c Opiaceos en orina Reactivo 2x200</descripcion>
+        <stock_minimo>2</stock_minimo>
+    </articulo>
+    <articulo>
+        <referencia_hnss></referencia_hnss>
+        <codigo>7P9720</codigo>
+        <descripcion>MICRO c Direct Bilirrubin Reactivo 4x360</descripcion>
+        <stock_minimo>2</stock_minimo>
+    </articulo>
+    <articulo>
+        <referencia_hnss></referencia_hnss>
+        <codigo>8P3820</codigo>
+        <descripcion>MICRO c Transferrin Reactivo 2x400</descripcion>
+        <stock_minimo>6</stock_minimo>
+    </articulo>
+    <articulo>
+        <referencia_hnss></referencia_hnss>
+        <codigo>8P0420</codigo>
+        <descripcion>MICRO c Microalbúmina Reactivo 2x320</descripcion>
+        <stock_minimo>8</stock_minimo>
+    </articulo>
+    <articulo>
+        <referencia_hnss></referencia_hnss>
+        <codigo>1R0620</codigo>
+        <descripcion>MICRO c ASO Reactivo 2x150</descripcion>
+        <stock_minimo>1</stock_minimo>
+    </articulo>
+    <articulo>
+        <referencia_hnss></referencia_hnss>
+        <codigo>9P5620</codigo>
+        <descripcion>MICRO c Complement C3 Reactivo 2x150</descripcion>
+        <stock_minimo>2</stock_minimo>
+    </articulo>
+    <articulo>
+        <referencia_hnss></referencia_hnss>
+        <codigo>9P5720</codigo>
+        <descripcion>MICRO c Complement C4 Reactivo 2x150</descripcion>
+        <stock_minimo>2</stock_minimo>
+    </articulo>
+    <articulo>
+        <referencia_hnss></referencia_hnss>
+        <codigo>8P1930</codigo>
+        <descripcion>MICRO c Magnesium  Reactivo 10x360</descripcion>
+        <stock_minimo>2</stock_minimo>
+    </articulo>
+    <articulo>
+        <referencia_hnss></referencia_hnss>
+        <codigo>7P5920</codigo>
+        <descripcion>MICRO c Urine/CSF Protein Reactivo 4x100</descripcion>
+        <stock_minimo>3</stock_minimo>
+    </articulo>
+    <articulo>
+        <referencia_hnss></referencia_hnss>
+        <codigo>1R0920</codigo>
+        <descripcion>MICRO c ?2-Microglobulin Reactivo 2x100</descripcion>
+        <stock_minimo>2</stock_minimo>
+    </articulo>
+    <articulo>
+        <referencia_hnss></referencia_hnss>
+        <codigo>8P1720</codigo>
+        <descripcion>MICRO c Aspartate Aminot (AST/GOT) React. 10x360</descripcion>
+        <stock_minimo>4</stock_minimo>
+    </articulo>
+    <articulo>
+        <referencia_hnss></referencia_hnss>
+        <codigo>7P9820</codigo>
+        <descripcion>MICRO c Alanine Aminotr (ALT/GPT) Reactivo 10x360</descripcion>
+        <stock_minimo>6</stock_minimo>
+    </articulo>
+    <articulo>
+        <referencia_hnss></referencia_hnss>
+        <codigo>7P7430</codigo>
+        <descripcion>MICRO c LDH Reactivo 4X490</descripcion>
+        <stock_minimo>5</stock_minimo>
+    </articulo>
+    <articulo>
+        <referencia_hnss></referencia_hnss>
+        <codigo>7P7330</codigo>
+        <descripcion>MICRO c Gamma-Glutamyl Tran (GGT) Reactivo 10X595</descripcion>
+        <stock_minimo>2</stock_minimo>
+    </articulo>
+    <articulo>
+        <referencia_hnss></referencia_hnss>
+        <codigo>8P0120</codigo>
+        <descripcion>MICRO c Creatinine Enzimática Reactivo 1440 det</descripcion>
+        <stock_minimo>16</stock_minimo>
+    </articulo>
+    <articulo>
+        <referencia_hnss></referencia_hnss>
+        <codigo>7P5530</codigo>
+        <descripcion>MICRO c Glucose Reactivo 10X1100</descripcion>
+        <stock_minimo>3</stock_minimo>
+    </articulo>
+    <articulo>
+        <referencia_hnss></referencia_hnss>
+        <codigo>8P3920</codigo>
+        <descripcion>MICRO c Iron Reactivo 10X230</descripcion>
+        <stock_minimo>4</stock_minimo>
+    </articulo>
+    <articulo>
+        <referencia_hnss></referencia_hnss>
+        <codigo>8P4030</codigo>
+        <descripcion>MICRO c Phosphorus Reactivo 10X850</descripcion>
+        <stock_minimo>2</stock_minimo>
+    </articulo>
+    <articulo>
+        <referencia_hnss></referencia_hnss>
+        <codigo>8P5630</codigo>
+        <descripcion>MICRO c Uric Acid  Reactivo 10X500</descripcion>
+        <stock_minimo>3</stock_minimo>
+    </articulo>
+    <articulo>
+        <referencia_hnss></referencia_hnss>
+        <codigo>8P1630</codigo>
+        <descripcion>MICRO c Urea Nitrogen Reactivo 10X1300</descripcion>
+        <stock_minimo>2</stock_minimo>
+    </articulo>
+    <articulo>
+        <referencia_hnss></referencia_hnss>
+        <codigo>7P7720</codigo>
+        <descripcion>MICRO c Triglyceride Reactivo 10X400</descripcion>
+        <stock_minimo>4</stock_minimo>
+    </articulo>
+    <articulo>
+        <referencia_hnss></referencia_hnss>
+        <codigo>7P7530</codigo>
+        <descripcion>MICRO c Ultra HDL Reactivo 10X350</descripcion>
+        <stock_minimo>3</stock_minimo>
+    </articulo>
+    <articulo>
+        <referencia_hnss></referencia_hnss>
+        <codigo>6K4202</codigo>
+        <descripcion>MICRO c Ig E Reactivo +-110</descripcion>
+        <stock_minimo>3</stock_minimo>
+    </articulo>
+    <articulo>
+        <referencia_hnss></referencia_hnss>
+        <codigo>8P4220</codigo>
+        <descripcion>MICRO c Creatine Kinase Reactivo 4X300</descripcion>
+        <stock_minimo>2</stock_minimo>
+    </articulo>
+    <articulo>
+        <referencia_hnss></referencia_hnss>
+        <codigo>7P5620</codigo>
+        <descripcion>MICRO c CRP Reactivo 10X350</descripcion>
+        <stock_minimo>3</stock_minimo>
+    </articulo>
+    <articulo>
+        <referencia_hnss></referencia_hnss>
+        <codigo>9P6220</codigo>
+        <descripcion>MICRO c Immunoglobulin G Reactivo 4X90</descripcion>
+        <stock_minimo>3</stock_minimo>
+    </articulo>
+    <articulo>
+        <referencia_hnss></referencia_hnss>
+        <codigo>9P6120</codigo>
+        <descripcion>MICRO c Immunoglobulin A Reactivo 4X90</descripcion>
+        <stock_minimo>3</stock_minimo>
+    </articulo>
+    <articulo>
+        <referencia_hnss></referencia_hnss>
+        <codigo>9P6320</codigo>
+        <descripcion>MICRO c Inmunoglob M Reactivo 4X90</descripcion>
+        <stock_minimo>3</stock_minimo>
+    </articulo>
+    <articulo>
+        <referencia_hnss></referencia_hnss>
+        <codigo>7P5220</codigo>
+        <descripcion>MICRO c Total Protein Reactivo 10X400</descripcion>
+        <stock_minimo>2</stock_minimo>
+    </articulo>
+    <articulo>
+        <referencia_hnss></referencia_hnss>
+        <codigo>1R1622</codigo>
+        <descripcion>MICRO c RF Reactivo 4X100</descripcion>
+        <stock_minimo>4</stock_minimo>
+    </articulo>
+</pedidosSaturno>
