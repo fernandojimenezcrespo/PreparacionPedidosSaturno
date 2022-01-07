@@ -33,8 +33,8 @@ import org.vaadin.utils.LeerServiciosSeccionesXML;
         shortName = "PedidosSaturno",
         description = "This is my first example fernando's  Vaadin application.",
         enableInstallPrompt = false)
-//@CssImport("./styles/shared-styles.css")
-//@CssImport(value = "./styles/vaadin-text-field-styles.css", themeFor = "vaadin-text-field")
+@CssImport("./styles/shared-styles.css")
+@CssImport(value = "./styles/vaadin-text-field-styles.css", themeFor = "vaadin-text-field")
 public class MainView extends HorizontalLayout {
 
     boolean hayTipo = false;
@@ -59,26 +59,27 @@ public class MainView extends HorizontalLayout {
         VerticalLayout vertical_dcha = new VerticalLayout();
         vertical_dcha.setWidth("80%");
         vertical_izq.setWidth("20%");
-        TextField textCampoNombre = new TextField("Your name");
+        TextField textCampoFicheroXML = new TextField("Fichero XML");
+        textCampoFicheroXML.addThemeName("bordered");
+
+         textCampoFicheroXML.setEnabled(false);
+        TextField textFecha = new TextField("Hoy");
+        textFecha.addThemeName("bordered");
+        textFecha.setEnabled(false);
+        textFecha.setValue("Aqui pondré la fecha");
         ComboBox<String> cmbTipoPedido = new ComboBox();
          ComboBox<Ficheros> cmbServicioSeccion = new ComboBox<>("Servicio/Seccion");
         cmbServicioSeccion.setItemLabelGenerator(Ficheros::getDescripcion);
         cmbServicioSeccion.setItems(ficherosList);
-        textCampoNombre.addThemeName("bordered");
+        
         cmbTipoPedido.setId("idTipoPedido");
         cmbTipoPedido.setLabel("Tipo de Pedido");
-        cmbTipoPedido.setItems("Almacen", "Compra Directa");
-        Span spanAclaracionTipo = new Span("-");
-        Span spanAclaracionServicioSeccion = new Span("-");
-        /*cmbTipoPedido.addValueChangeListener(event
-                -> spanAclaracionTipo.setText("El tipo es: " + event.getValue())
-                );*/
- /*cmbServicioSeccion.addValueChangeListener(event
-                -> spanAclaracionServicioSeccion.setText("El Servicio es: " + event.getValue()));*/
+         cmbTipoPedido.setItems("Almacen", "Compra Directa");
+ 
         cmbTipoPedido.addValueChangeListener(event
                 -> {
-            spanAclaracionTipo.setText("El tipo es: " + event.getValue());
-            hayTipo = actulizaTipoPedido(event.getValue());
+            
+             hayTipo = actulizaTipoPedido(event.getValue());
             if (hayTipo && hayServicio) {
                 gridArticulos.setVisible(true);
                 articulosList = cargaArticulos(articulo, articulosList,ficheroSeleccionado);
@@ -89,7 +90,7 @@ public class MainView extends HorizontalLayout {
         );
         cmbServicioSeccion.addValueChangeListener(event
                 -> {
-            spanAclaracionServicioSeccion.setText("El fichero es: " + event.getValue().getFichero());
+            textCampoFicheroXML.setValue(event.getValue().getFichero());
             hayServicio = actulizaServicioSeccion(event.getValue().getDescripcion());
             ficheroSeleccionado=event.getValue().getFichero();
             if (hayTipo && hayServicio) {
@@ -108,13 +109,13 @@ public class MainView extends HorizontalLayout {
         //grid.setWidthFull();
         //grid.setSizeFull();
         gridArticulos.addThemeVariants(GridVariant.LUMO_NO_BORDER);//No pone bordes verticales.
-        
+        gridArticulos.addThemeVariants(GridVariant.MATERIAL_COLUMN_DIVIDERS);
 
-        textCampoNombre.setId("idCampoNombre");
+         
 
         // Button click listeners can be defined as lambda expressions
         Button button = new Button("Say hello",
-                e -> Notification.show(service.greet(textCampoNombre.getValue())));
+                e -> Notification.show(service.greet(textFecha.getValue())));
 
         // Theme variants give you predefined extra styles for components.
         // Example: Primary button has a more prominent look.
@@ -126,7 +127,7 @@ public class MainView extends HorizontalLayout {
 
         // Use custom CSS classes to apply styling. This is defined in shared-styles.css.
         addClassName("centered-content");
-        vertical_izq.add(textCampoNombre, button, spanAclaracionTipo, spanAclaracionServicioSeccion);
+        vertical_izq.add(textFecha,textCampoFicheroXML, button );
         vertical_dcha.add(cmbTipoPedido, cmbServicioSeccion, gridArticulos);
         add(vertical_izq, vertical_dcha);
     }
