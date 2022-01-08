@@ -4,9 +4,11 @@ import com.vaadin.flow.component.Key;
 import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.button.ButtonVariant;
 import com.vaadin.flow.component.combobox.ComboBox;
+import com.vaadin.flow.component.datepicker.DatePicker;
 import com.vaadin.flow.component.dependency.CssImport;
 import com.vaadin.flow.component.grid.Grid;
 import com.vaadin.flow.component.grid.GridVariant;
+import com.vaadin.flow.component.html.Anchor;
 import com.vaadin.flow.component.html.Span;
 import com.vaadin.flow.component.notification.Notification;
 import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
@@ -16,10 +18,12 @@ import com.vaadin.flow.router.Route;
 import com.vaadin.flow.server.PWA;
 import com.vaadin.flow.shared.Registration;
 import java.io.IOException;
+import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Locale;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -36,22 +40,21 @@ import org.vaadin.utils.LeerServiciosSeccionesXML;
 @CssImport("./styles/shared-styles.css")
 @CssImport(value = "./styles/vaadin-text-field-styles.css", themeFor = "vaadin-text-field")
 public class MainView extends HorizontalLayout {
-
+    
     boolean hayTipo = false;
     boolean hayServicio = false;
-    String ficheroSeleccionado="";
+    String ficheroSeleccionado = "";
     Articulos articulo = new Articulos();
     List<Articulos> articulosList = new ArrayList<Articulos>();
     Ficheros ficheros = new Ficheros();
-    List<Ficheros> ficherosList= new ArrayList<Ficheros>();
-    LeerServiciosSeccionesXML leerServiciosSeccionesXML= new LeerServiciosSeccionesXML();
+    List<Ficheros> ficherosList = new ArrayList<Ficheros>();
+    LeerServiciosSeccionesXML leerServiciosSeccionesXML = new LeerServiciosSeccionesXML();
     Grid<Articulos> gridArticulos = new Grid<>(Articulos.class);
     
-
     public MainView(@Autowired GreetService service) {
         try {
-            ficheroSeleccionado="";
-            ficherosList=leerServiciosSeccionesXML.LeerXML();
+            ficheroSeleccionado = "";
+            ficherosList = leerServiciosSeccionesXML.LeerXML();
         } catch (IOException ex) {
             Logger.getLogger(MainView.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -61,57 +64,63 @@ public class MainView extends HorizontalLayout {
         vertical_izq.setWidth("20%");
         TextField textCampoFicheroXML = new TextField("Fichero XML");
         textCampoFicheroXML.addThemeName("bordered");
-
-         textCampoFicheroXML.setEnabled(false);
+        
+        textCampoFicheroXML.setEnabled(false);
         TextField textFecha = new TextField("Hoy");
         textFecha.addThemeName("bordered");
         textFecha.setEnabled(false);
         textFecha.setValue("Aqui pondré la fecha");
+        
+        Locale finnishLocale = new Locale("fi", "FI");
+        
+        DatePicker datePicker = new DatePicker("Today is:");
+        datePicker.setLocale(finnishLocale);
+        datePicker.setValue(LocalDate.now());
+        datePicker.setEnabled(false);
+        
         ComboBox<String> cmbTipoPedido = new ComboBox();
-         ComboBox<Ficheros> cmbServicioSeccion = new ComboBox<>("Servicio/Seccion");
+        ComboBox<Ficheros> cmbServicioSeccion = new ComboBox<>("Servicio/Seccion");
         cmbServicioSeccion.setItemLabelGenerator(Ficheros::getDescripcion);
         cmbServicioSeccion.setItems(ficherosList);
         
         cmbTipoPedido.setId("idTipoPedido");
         cmbTipoPedido.setLabel("Tipo de Pedido");
-         cmbTipoPedido.setItems("Almacen", "Compra Directa");
- 
+        cmbTipoPedido.setItems("Almacen", "Compra Directa");
+        
         cmbTipoPedido.addValueChangeListener(event
                 -> {
             
-             hayTipo = actulizaTipoPedido(event.getValue());
+            hayTipo = actulizaTipoPedido(event.getValue());
             if (hayTipo && hayServicio) {
                 gridArticulos.setVisible(true);
-                articulosList = cargaArticulos(articulo, articulosList,ficheroSeleccionado);
+                articulosList = cargaArticulos(articulo, articulosList, ficheroSeleccionado);
                 gridArticulos.setItems(articulosList);
             }
-
+            
         }
         );
         cmbServicioSeccion.addValueChangeListener(event
                 -> {
             textCampoFicheroXML.setValue(event.getValue().getFichero());
             hayServicio = actulizaServicioSeccion(event.getValue().getDescripcion());
-            ficheroSeleccionado=event.getValue().getFichero();
+            ficheroSeleccionado = event.getValue().getFichero();
             if (hayTipo && hayServicio) {
                 gridArticulos.setVisible(true);
-                articulosList = cargaArticulos(articulo, articulosList,ficheroSeleccionado);
+                articulosList = cargaArticulos(articulo, articulosList, ficheroSeleccionado);
                 gridArticulos.setItems(articulosList);
             }
         }
         );
         if (hayTipo && hayServicio) {
-            articulosList = cargaArticulos(articulo, articulosList,ficheroSeleccionado);
+            articulosList = cargaArticulos(articulo, articulosList, ficheroSeleccionado);
         }
-
+        
         gridArticulos.setVisible(false);
 
         //grid.setWidthFull();
         //grid.setSizeFull();
         gridArticulos.addThemeVariants(GridVariant.LUMO_NO_BORDER);//No pone bordes verticales.
         gridArticulos.addThemeVariants(GridVariant.MATERIAL_COLUMN_DIVIDERS);
-
-         
 
         // Button click listeners can be defined as lambda expressions
         Button button = new Button("Say hello",
@@ -127,11 +136,12 @@ public class MainView extends HorizontalLayout {
 
         // Use custom CSS classes to apply styling. This is defined in shared-styles.css.
         addClassName("centered-content");
-        vertical_izq.add(textFecha,textCampoFicheroXML, button );
+        
+        vertical_izq.add(datePicker, textFecha, textCampoFicheroXML, button);
         vertical_dcha.add(cmbTipoPedido, cmbServicioSeccion, gridArticulos);
         add(vertical_izq, vertical_dcha);
     }
-
+    
     private List<Articulos> cargaArticulos(Articulos articulo, List<Articulos> articulosList, String ficheroSelecionado) {
         //Articulos articulo=new Articulos();
         try {
@@ -146,9 +156,9 @@ public class MainView extends HorizontalLayout {
         } catch (Exception e) {
         }
         return null;
-
+        
     }
-
+    
     private boolean actulizaTipoPedido(String value) {
         if (!value.isEmpty() && !value.trim().equals("")) {
             return true;
@@ -156,7 +166,7 @@ public class MainView extends HorizontalLayout {
             return false;
         }
     }
-
+    
     private boolean actulizaServicioSeccion(String value) {
         if (!value.isEmpty() && !value.trim().equals("")) {
             return true;
