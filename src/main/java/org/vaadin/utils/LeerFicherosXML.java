@@ -55,12 +55,12 @@ public class LeerFicherosXML {
                     articulo.setCodigoSaturno(codigo);
                     articulo.setDescripcion(descripcion);
                     articulo.setStockMinimo(minimo);
-                   // articulo.setCantidadPedir(1);
+                    articulo.setCantidadPedir(1);
                     articulosList.add(temp, articulo);
                     // Recuerda que si  no creas el objeto  articulo cada iteración siempre te graba lo mismo.
 
-                   // System.out.println("Codigo:" + codigo + "\n");
-                   //  System.out.println("Descrip " + eElement.getElementsByTagName("descripcion").item(0).getTextContent());
+                    System.out.println("Codigo:" + codigo + "\n");
+                    System.out.println("Descrip " + eElement.getElementsByTagName("descripcion").item(0).getTextContent());
                 }
             }
 
