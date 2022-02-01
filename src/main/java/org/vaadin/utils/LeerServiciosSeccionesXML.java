@@ -23,7 +23,8 @@ import org.w3c.dom.NodeList;
  */
 public class LeerServiciosSeccionesXML {
 
-    final String DIRECTORIOXML = "C:\\Users\\ferna\\Documents\\Programacion\\Vaadin\\PreparacionPedidosSaturno\\src\\main\\java\\org\\vaadin\\ficherosXML\\";
+    //final String DIRECTORIOXML = "C:\\Users\\ferna\\Documents\\Programacion\\Vaadin\\PreparacionPedidosSaturno\\src\\main\\java\\org\\vaadin\\ficherosXML\\";
+    final String DIRECTORIOXML="\\ProgramasHnss\\PreparacionPedidosSaturno\\ficherosXML\\";
     final String FICHEROXML = "FICHEROS.xml";
 
     public List<Ficheros> LeerXML() throws IOException {
